@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
 	// struct sockaddr_in ip_address;
 	struct sockaddr_in server_address;
 	int socket_no = 0;
-	char buffer[1024] = {0};
+	unsigned char buffer[1024] = {0};
 	char *line = NULL;
 	size_t len = 0;
 
@@ -119,12 +119,7 @@ int main(int argc, char const *argv[])
 				if(buffer[1] == WILL){
 					buffer[1] = DO;
 				}
-				if(buffer[2] == DO){
-					buffer[2] = WONT;
-				}
-				if(buffer[2] == WILL){
-					buffer[2] = DO;
-				}				
+				
 				int er = send(socket_no, buffer, 3, 0);
 				if(er == -1){
 					printf("send() returned an error\n");
