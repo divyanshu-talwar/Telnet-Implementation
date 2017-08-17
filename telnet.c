@@ -47,6 +47,10 @@ int main(int argc, char const *argv[])
 		// if the ip address is invalid the string entered might be domain name.
 		// converting domain name to ip.
 		struct hostent *ip_convert = gethostbyname(argv[1]);
+		if(ip_convert == NULL){
+			printf("Invalid Domain Name / IP Address !\n");
+			exit(1);
+		}
 		char addr[32];
 		struct in_addr **addr_list = (struct in_addr **) ip_convert->h_addr_list;
 		if(addr_list[0] != NULL){
