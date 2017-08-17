@@ -3,6 +3,7 @@
 
 # Object files
 *.o
+telnet
 *.ko
 *.obj
 *.elf
